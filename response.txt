@@ -1,0 +1,4 @@
+Hey Team! Yesterday was quite the intellectual adventure! I dove deep into the wondrous world of the OpenAI API, exploring the magic of chat completion and even dabbled in voice functions. It was like a tech scavenger hunt – a few “Eureka!” moments and some fun discoveries about how we can enhance our applications!
+Now, onto today!
+-I’m shifting gears to tackle the intriguing realm of function calling with OpenAI. My goal is to unleash the potential of our projects by integrating function calling capabilities, making our applications even smarter and more interactive. Let’s see how we can make our bots not just chatty but also action-packed!
+-Let’s keep the momentum going! Can’t wait to share some exciting insights tomorrow!
