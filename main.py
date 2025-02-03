@@ -3,7 +3,7 @@ from store import Store
 from asyncio import run
 from logging import getLogger
 
-from gpt_client.client import GPTCommandsClient
+from gpt_commands import GPTCommandsClient
 
 #CHAT_MODEL="gpt-3.5-turbo"
 CHAT_MODEL="gpt-4o-mini"
