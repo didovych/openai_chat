@@ -18,11 +18,6 @@ async def main():
 
     manager = Store()
 
-    # conversation examples:
-    # Can you give me statuses of my orders under 180 euros?
-    # What is the status of my order with the number FD4587?
-    # Can you cancel my order with the number XX3322?
-
     model = CHAT_MODEL
     async with GPTCommandsClient(model, system_prompt) as client:
         while True:
