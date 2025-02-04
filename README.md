@@ -1,15 +1,15 @@
-# GPT-Assistant for Online Shop
+# Project Summary
 
-This project is an AI-powered assistant for an online shop, utilizing OpenAI's GPT models to handle customer inquiries and manage orders. The assistant can provide order statuses, cancel orders, and list orders under a specified price.
+This project demonstrates the usage of the function calling functionality of the OpenAI. The [function calling documentation](https://platform.openai.com/docs/guides/function-calling).
 
-# Usage
+## `GPTClient` Class
 
-Run the application. You can interact with the assistant by typing your queries in the console. The assistant can handle the following types of queries:
+The `GPTClient` class is designed to interact with the OpenAI GPT models. It provides methods to send prompts to the model and receive generated responses. This class simplifies the process of integrating GPT-based functionalities into your applications.
 
-- What is the status of my order with the number FD4587?
-- Can you cancel my order with the number XX3322?
-- Can you give me statuses of my orders under 180 euros?
+### `Store` Example
 
-# GPT Commands Library
+The `Store` example demonstrates how to use the `GPTClient` class to simulate a conversation with a virtual store assistant. The assistant can help with product inquiries, provide recommendations, and assist with the checkout process. This example showcases the potential of integrating GPT models into e-commerce platforms to enhance customer experience.
 
-This project uses [GPT commands library](https://github.com/keenua/gpt-commands-python) to handle requests with the GPT client.
+### `CarbonFootprint` Example
+
+The `CarbonFootprint` example illustrates the usage of the function calling with the public APIs. The [Carbon interface](https://docs.carboninterface.com/#/) is used for this example. To work with this API you need to add `CARBON_API_KEY` to your `.env` variables.
