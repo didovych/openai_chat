@@ -1,5 +1,6 @@
 from openai import OpenAI
 from store import Store
+from carbon_footprint import CarbonFootprint
 from asyncio import run
 from logging import getLogger
 
@@ -12,11 +13,14 @@ async def main():
     logger = getLogger(__name__)
     logger.info("Starting ...")
 
+    # system_prompt = """
+    #     You are an assistant for the online shop.
+    # """
+    #manager = Store()
     system_prompt = """
-        You are an assistant for the online shop.
+        You are an assistant for the carbon footprint calculator.
     """
-
-    manager = Store()
+    manager = CarbonFootprint()
 
     model = CHAT_MODEL
     async with GPTCommandsClient(model, system_prompt) as client:
