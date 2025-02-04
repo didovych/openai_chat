@@ -1,6 +1,6 @@
 from typing import List
 
-# conversation examples:
+# Conversation examples:
 
 # What is the status of my order with the number FD4587?
 # Can you cancel my order with the number XX3322?
@@ -8,6 +8,9 @@ from typing import List
 
 class Store:
     def __init__(self):
+        self.system_prompt = """
+            You are an assistant for the online shop.
+        """
         self.orders = [
             {"order_number": "FD4587", "price": 100.0, "item": "T-shirt", "status": "Delivered"},
             {"order_number": "DW4578", "price": 200.0, "item": "Shoes", "status": "Processed"},

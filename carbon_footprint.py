@@ -2,12 +2,20 @@ import os
 import requests
 from dotenv import load_dotenv
 
+# Conversation examples:
+
+# Can you calculate a footprint for my family vacation flight?
+# We will fly from Amsterdam to Madrid with my wife
+
 class CarbonFootprint:
     def __init__(self):
         self.base_url = "https://www.carboninterface.com/api/v1/"
         # read the API key from the environment variable
         load_dotenv()
         self.api_key = os.environ.get("CARBON_API_KEY")
+        self.system_prompt = """
+            You are an assistant for the carbon footprint calculation.
+        """
 
     def get_electricity_footprint(self, electricity_value: float, country: str) -> float:
         """
