@@ -22,11 +22,6 @@ class CarbonFootprint:
 
         print(f"Log: get_electricity_footprint called with electricity_value: {electricity_value} and country: {country}")
 
-        url = f"{self.base_url}estimates"
-        headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        }
         data = {
             "type": "electricity",
             "electricity_unit": "mwh",
@@ -34,14 +29,7 @@ class CarbonFootprint:
             "country": country
         }
 
-        response = requests.post(url, headers=headers, json=data)
-
-        if response.status_code == 200 or response.status_code == 201:
-            result = response.json()
-            return result.get("data", {}).get("attributes", {}).get("carbon_kg", 0.0)
-        else:
-            print(f"Error: {response.status_code}, {response.text}")
-            return 0.0
+        return self.__make_api_request(data)
 
     def get_flight_footprint(self, departure_airport: str, destination_airport: str, passengers: int) -> float:
         """
@@ -57,11 +45,6 @@ class CarbonFootprint:
 
         print(f"Log: get_flight_footprint called with departure_airport: {departure_airport}, destination_airport: {destination_airport}, and passengers: {passengers}")
 
-        url = f"{self.base_url}estimates"
-        headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        }
         data = {
             "type": "flight",
             "passengers": passengers,
@@ -71,6 +54,15 @@ class CarbonFootprint:
                     "destination_airport": destination_airport
                 }
             ]
+        }
+
+        return self.__make_api_request(data)
+
+    def __make_api_request(self, data: dict) -> float:
+        url = f"{self.base_url}estimates"
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
         }
 
         response = requests.post(url, headers=headers, json=data)
