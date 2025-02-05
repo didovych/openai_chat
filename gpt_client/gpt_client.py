@@ -55,8 +55,9 @@ class GPTClient:
         self.manager: Manager = create_manager(manager)
         self.openAIClient = OpenAI()
 
-    def __send_message(self, message_to_send: Message) -> Optional[str]:
-        self.messages.append(message_to_send.to_request())
+    def __send_message(self, message_to_send: Optional[Message]) -> Optional[str]:
+        if message_to_send is not None:
+            self.messages.append(message_to_send.to_request())
 
         completion = self.openAIClient.chat.completions.create(
             model=self.model,
@@ -69,16 +70,21 @@ class GPTClient:
 
         # check if function call is present
         if completion.choices[0].message.tool_calls is not None:
-            # TODO add support for multiple function calls
             # append model's function call message
             self.messages.append(completion.choices[0].message)
 
-            # get function call from the completion
-            function_call = self.__parse_function_call(completion.choices[0].message.tool_calls[0])
+            # go through all function calls
+            for tool_call in completion.choices[0].message.tool_calls:
+                # get the function call
+                function_call = self.__parse_function_call(tool_call)
 
-            function_result = function_call.execute(self.manager)
+                function_result = function_call.execute(self.manager)
 
-            return self.__send_message(Message(Role.TOOL, function_result, function_call.id))
+                # append the function result to the messages
+                self.messages.append(Message(Role.TOOL, function_result, function_call.id).to_request())
+
+            # send all function results to the model
+            return self.__send_message(None)
 
         return completion.choices[0].message.content
 

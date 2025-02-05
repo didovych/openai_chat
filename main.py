@@ -9,8 +9,8 @@ from gpt_client.gpt_client import GPTClient
 CHAT_MODEL="gpt-4o-mini"
 
 def main():
-    manager = Store()
-    #manager = CarbonFootprint()
+    #manager = Store()
+    manager = CarbonFootprint()
 
     gptClient = GPTClient(CHAT_MODEL, manager.system_prompt, manager)
     while True:

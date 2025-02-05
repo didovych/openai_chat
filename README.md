@@ -6,6 +6,8 @@ This project demonstrates the usage of the function calling functionality of the
 
 The `GPTClient` class is designed to interact with the OpenAI GPT models. It provides methods to send prompts to the model and receive generated responses. This class simplifies the process of integrating GPT-based functionalities into your applications.
 
+It is built using [GPT commands](https://github.com/keenua/gpt-commands-python) library.
+
 ### `Store` Example
 
 The `Store` example demonstrates how to use the `GPTClient` class to simulate a conversation with a virtual store assistant. The assistant can help with product inquiries, provide recommendations, and assist with the checkout process. This example showcases the potential of integrating GPT models into e-commerce platforms to enhance customer experience.
